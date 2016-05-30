@@ -40,10 +40,13 @@
     "loader.js": "^4.0.1"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+	"keeko"
   ],
   "dependencies": {
-    "ember-cli-babel": "^5.1.6"
+	"ember-can": "0.8.1",
+    "ember-cli-babel": "^5.1.6",
+	"ember-simple-auth": "1.1.0"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
