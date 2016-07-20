@@ -23,16 +23,14 @@ export default SessionService.extend({
 	},
 
 	updatePermissions(data) {
-		let host = this.get('store').adapterFor('application').get('host');
-		let namespace = this.get('store').adapterFor('application').get('namespace');
-		let self = this;
-
-		let bearer = data.id ? data.id : null;
+		const adapter = this.get('store').adapterFor('application');
+		const self = this;
+		const bearer = data.id ? data.id : null;
 		if (bearer === null) {
 			return;
 		}
 
-		Ember.$.ajax(host + '/' + namespace + '/auth/permissions', {
+		Ember.$.ajax(adapter.urlPrefix() + '/auth/permissions', {
 			'method': 'GET',
 			'headers': {
 				'Authorization': 'Bearer ' + bearer

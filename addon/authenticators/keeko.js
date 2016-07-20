@@ -6,17 +6,15 @@ export default Base.extend({
 	store: Ember.inject.service('store'),
 
 	restore(data) {
-		let id = data.data && data.data.id ? data.data.id : null;
-		let store = this.get('store');
-		let host = store.adapterFor('application').get('host');
-		let namespace = store.adapterFor('application').get('namespace');
-		let self = this;
+		const id = data.data && data.data.id ? data.data.id : null;
+		const adapter = this.get('store').adapterFor('application');
+		const self = this;
 
 		return new Ember.RSVP.Promise(function (resolve, reject) {
 			if (id === null) {
 				reject('No auth data available');
 			}
-			Ember.$.ajax(host + '/' + namespace + '/auth/session', {
+			Ember.$.ajax(adapter.urlPrefix() + '/auth/session', {
 				'method': 'GET',
 				'headers': {
 					'Authorization': 'Bearer ' + id
@@ -32,12 +30,10 @@ export default Base.extend({
  	},
 
 	authenticate(login, password) {
-		let store = this.get('store');
-		let host = store.adapterFor('application').get('host');
-		let namespace = store.adapterFor('application').get('namespace');
+		const adapter = this.get('store').adapterFor('application');
 
 		return new Ember.RSVP.Promise(function (resolve, reject) {
-			Ember.$.ajax(host + '/' + namespace + '/auth/session', {
+			Ember.$.ajax(adapter.urlPrefix() + '/auth/session', {
 				'method': 'POST',
 				'dataType': 'json',
 				'data': JSON.stringify({
@@ -57,16 +53,14 @@ export default Base.extend({
 	},
 
 	invalidate(data) {
-		let id = data.data && data.data.id ? data.data.id : null;
-		let store = this.get('store');
-		let host = store.adapterFor('application').get('host');
-		let namespace = store.adapterFor('application').get('namespace');
+		const id = data.data && data.data.id ? data.data.id : null;
+		const adapter = this.get('store').adapterFor('application');
 
 		return new Ember.RSVP.Promise(function (resolve, reject) {
 			if (id === null) {
 				reject('No auth data available');
 			}
-			Ember.$.ajax(host + '/' + namespace + '/auth/session', {
+			Ember.$.ajax(adapter.urlPrefix() + '/auth/session', {
 				'method': 'delete',
 				'headers': {
 					'Authorization': 'Bearer ' + id
