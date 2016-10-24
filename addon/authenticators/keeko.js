@@ -22,7 +22,6 @@ export default Base.extend({
 				'dataType': 'json'
 			}).done((response) => {
 				resolve(response);
-				self.get('session').updatePermissions(response.data);
 			}).fail((xhr) => {
 				reject(xhr.responseJSON || xhr.responseText);
 			});

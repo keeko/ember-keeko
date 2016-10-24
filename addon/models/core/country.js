@@ -20,11 +20,11 @@ export default Model.extend({
 	bboxSwLng: attr('number'),
 	bboxNeLat: attr('number'),
 	bboxNeLng: attr('number'),
-	continent: belongsTo('core/continent'),
-	currency: belongsTo('core/currency'),
-	type: belongsTo('core/region-type', {inverse: null}),
-	subtype: belongsTo('core/region-type', {inverse: null}),
-	subordinates: hasMany('core/country'),
-	country: belongsTo('core/country', {inverse: null}),
+	continent: belongsTo('core/continent', {inverse: 'countries'}),
+	currency: belongsTo('core/currency', {inverse: 'countries'}),
+	type: belongsTo('core/region-type'),
+	subtype: belongsTo('core/region-type', {inverse: 'countries'}),
+	subordinates: hasMany('core/country', {inverse: 'country'}),
+	country: belongsTo('core/country', {inverse: 'subordinates'}),
 	subdivisions: hasMany('core/subdivision')
 });

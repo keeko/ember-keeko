@@ -6,5 +6,5 @@ export default Model.extend({
 	name: attr('string'),
 	countries: hasMany('core/country'),
 	subdivisions: hasMany('core/subdivision'),
-	area: belongsTo('core/region-area')
+	area: belongsTo('core/region-area', {inverse: 'types'})
 });

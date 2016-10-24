@@ -6,6 +6,6 @@ export default Model.extend({
 	httphost: attr('string'),
 	basepath: attr('string'),
 	secure: attr('boolean'),
-	application: belongsTo('core/application'),
-	localization: belongsTo('core/localization')
+	application: belongsTo('core/application', {inverse: 'applicationUris'}),
+	localization: belongsTo('core/localization', {inverse: 'applicationUris'})
 });

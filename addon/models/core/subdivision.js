@@ -8,6 +8,6 @@ export default Model.extend({
 	nativeName: attr('string'),
 	altNames: attr('string'),
 	parentId: attr('number'),
-	country: belongsTo('core/country'),
-	type: belongsTo('core/region-type')
+	country: belongsTo('core/country', {inverse: 'subdivisions'}),
+	type: belongsTo('core/region-type', {inverse: 'subdivisions'})
 });

@@ -7,7 +7,7 @@ export default Model.extend({
 	activatedVersion: attr('string'),
 	defaultAction: attr('string'),
 	slug: attr('string'),
-	api: attr('boolean'),
+	api: attr('boolean', {defaultValue: false}),
 	name: attr('string'),
 	title: attr('string'),
 	description: attr('string'),

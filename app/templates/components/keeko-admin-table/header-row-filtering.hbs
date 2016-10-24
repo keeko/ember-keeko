@@ -1,0 +1,17 @@
+<tr>
+  {{#each processedColumns as |column|}}
+    {{#if column.isVisible}}
+      <th class="{{classes.theadCell}} {{unless column.useFilter classes.theadCellNoFiltering}}">
+        {{#if column.useFilter}}
+          {{#if column.filterWithSelect}}
+            {{models-select options=column.filterOptions cssPropertyName=column.cssPropertyName value=column.filterString class="changeFilterForColumn"}}
+          {{else}}
+            {{input type="text" value=column.filterString class="form-control form-control-sm" enter="" placeholder=column.filterPlaceholder}}
+          {{/if}}
+        {{else}}
+          &nbsp;
+        {{/if}}
+      </th>
+    {{/if}}
+  {{/each}}
+</tr>

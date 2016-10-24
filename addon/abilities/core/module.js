@@ -2,31 +2,31 @@ import Ember from 'ember';
 import { Ability } from 'ember-can';
 
 export default Ability.extend({
-	canPaginate: Ember.computed(function() {
+	canPaginate: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'module-paginate');
 	}),
-	canCreate: Ember.computed(function() {
+	canCreate: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'module-create');
 	}),
-	canRead: Ember.computed(function() {
+	canRead: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'module-read');
 	}),
-	canUpdate: Ember.computed(function() {
+	canUpdate: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'module-update');
 	}),
-	canDelete: Ember.computed(function() {
+	canDelete: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'module-delete');
 	}),
-	canReadAction: Ember.computed(function() {
+	canReadAction: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'module-to-action-relationship-read');
 	}),
-	canUpdateAction: Ember.computed(function() {
+	canUpdateAction: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'module-to-action-relationship-update');
 	}),
-	canAddAction: Ember.computed(function() {
+	canAddAction: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'module-to-action-relationship-add');
 	}),
-	canRemoveAction: Ember.computed(function() {
+	canRemoveAction: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'module-to-action-relationship-remove');
 	})
 });

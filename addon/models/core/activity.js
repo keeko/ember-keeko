@@ -4,7 +4,9 @@ import { belongsTo } from 'ember-data/relationships';
 
 export default Model.extend({
 	verb: attr('string'),
-	actor: belongsTo('core/user'),
-	object: belongsTo('core/activity-object', {inverse: null}),
-	target: belongsTo('core/activity-object', {inverse: null})
+	createdAt: attr('date'),
+	updatedAt: attr('date'),
+	actor: belongsTo('core/user', {inverse: 'activities'}),
+	object: belongsTo('core/activity-object'),
+	target: belongsTo('core/activity-object', {inverse: 'activities'})
 });

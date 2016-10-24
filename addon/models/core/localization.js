@@ -7,11 +7,11 @@ export default Model.extend({
 	locale: attr('string'),
 	region: attr('string'),
 	isDefault: attr('boolean'),
-	localizations: hasMany('core/localization'),
-	parent: belongsTo('core/localization', {inverse: null}),
-	language: belongsTo('core/language', {inverse: null}),
-	extLang: belongsTo('core/language', {inverse: null}),
-	script: belongsTo('core/language-script'),
+	localizations: hasMany('core/localization', {inverse: 'parent'}),
+	parent: belongsTo('core/localization', {inverse: 'localizations'}),
+	language: belongsTo('core/language'),
+	extLang: belongsTo('core/language', {inverse: 'localizations'}),
+	script: belongsTo('core/language-script', {inverse: 'localizations'}),
 	languageVariants: hasMany('core/language-variant'),
 	applicationUris: hasMany('core/application-uri')
 });

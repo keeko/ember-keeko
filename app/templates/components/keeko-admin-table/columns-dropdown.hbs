@@ -1,0 +1,21 @@
+<div class="{{classes.columnsDropdownWrapper}}">
+  <div class="{{classes.columnsDropdownButtonWrapper}}">
+    <button class="{{classes.buttonDefault}} btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+      {{messages.columns-title}} <span class="{{icons.caret}}"></span>
+    </button>
+    <div class="{{classes.columnsDropdown}}">
+      <a class="dropdown-item" {{action "showAllColumns" column bubbles=false}} href="#">{{messages.columns-showAll}}</a>
+      <a class="dropdown-item" {{action "hideAllColumns" column bubbles=false}} href="#">{{messages.columns-hideAll}}</a>
+      <a class="dropdown-item" {{action "restoreDefaultVisibility" column bubbles=false}} href="#">{{messages.columns-restoreDefaults}}</a>
+      <div class="dropdown-divider"></div>
+      {{#each processedColumns as |column|}}
+        {{#if column.mayBeHidden}}
+          <a class="dropdown-item" {{action "toggleHidden" column bubbles=false}} href="#">
+                <span class="{{if column.isVisible icons.column-visible icons.column-hidden}}"></span> {{column.title}}
+          </a>
+        {{/if}}
+      {{/each}}
+  </div>
+  </div>
+</div>

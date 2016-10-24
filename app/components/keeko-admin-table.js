@@ -1,0 +1,1 @@
+export { default } from 'ember-keeko/components/keeko-admin-table';

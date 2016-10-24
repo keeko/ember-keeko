@@ -13,11 +13,11 @@ export default Model.extend({
 	collate: attr('string'),
 	subtag: attr('string'),
 	prefix: attr('string'),
-	sublanguages: hasMany('core/language'),
-	parent: belongsTo('core/language', {inverse: null}),
-	scope: belongsTo('core/language-scope'),
-	type: belongsTo('core/language-type'),
-	script: belongsTo('core/language-script'),
-	family: belongsTo('core/language-family'),
+	sublanguages: hasMany('core/language', {inverse: 'parent'}),
+	parent: belongsTo('core/language', {inverse: 'sublanguages'}),
+	scope: belongsTo('core/language-scope', {inverse: 'languages'}),
+	type: belongsTo('core/language-type', {inverse: 'languages'}),
+	script: belongsTo('core/language-script', {inverse: 'languages'}),
+	family: belongsTo('core/language-family', {inverse: 'languages'}),
 	localizations: hasMany('core/localization')
 });

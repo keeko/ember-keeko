@@ -12,7 +12,7 @@ export default Model.extend({
 	displayNameUserSelect: attr('string'),
 	email: attr('string'),
 	birth: attr('string'),
-	sex: attr('number'),
+	sex: attr('number', {defaultValue: -1}),
 	slug: attr('string'),
 	passwordRecoverToken: attr('string'),
 	passwordRecoverTime: attr('date'),

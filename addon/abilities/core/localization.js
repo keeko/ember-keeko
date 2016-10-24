@@ -2,79 +2,79 @@ import Ember from 'ember';
 import { Ability } from 'ember-can';
 
 export default Ability.extend({
-	canPaginate: Ember.computed(function() {
+	canPaginate: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-paginate');
 	}),
-	canCreate: Ember.computed(function() {
+	canCreate: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-create');
 	}),
-	canRead: Ember.computed(function() {
+	canRead: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-read');
 	}),
-	canUpdate: Ember.computed(function() {
+	canUpdate: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-update');
 	}),
-	canDelete: Ember.computed(function() {
+	canDelete: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-delete');
 	}),
-	canReadLocalization: Ember.computed(function() {
+	canReadLocalization: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-to-localization-relationship-read');
 	}),
-	canUpdateLocalization: Ember.computed(function() {
+	canUpdateLocalization: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-to-localization-relationship-update');
 	}),
-	canAddLocalization: Ember.computed(function() {
+	canAddLocalization: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-to-localization-relationship-add');
 	}),
-	canRemoveLocalization: Ember.computed(function() {
+	canRemoveLocalization: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-to-localization-relationship-remove');
 	}),
-	canReadParent: Ember.computed(function() {
+	canReadParent: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-to-parent-relationship-read');
 	}),
-	canUpdateParent: Ember.computed(function() {
+	canUpdateParent: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-to-parent-relationship-update');
 	}),
-	canReadLanguage: Ember.computed(function() {
+	canReadLanguage: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-to-language-relationship-read');
 	}),
-	canUpdateLanguage: Ember.computed(function() {
+	canUpdateLanguage: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-to-language-relationship-update');
 	}),
-	canReadExtLang: Ember.computed(function() {
+	canReadExtLang: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-to-ext_lang-relationship-read');
 	}),
-	canUpdateExtLang: Ember.computed(function() {
+	canUpdateExtLang: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-to-ext_lang-relationship-update');
 	}),
-	canReadScript: Ember.computed(function() {
+	canReadScript: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-to-script-relationship-read');
 	}),
-	canUpdateScript: Ember.computed(function() {
+	canUpdateScript: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-to-script-relationship-update');
 	}),
-	canReadLanguageVariant: Ember.computed(function() {
+	canReadLanguageVariant: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-to-language_variant-relationship-read');
 	}),
-	canUpdateLanguageVariant: Ember.computed(function() {
+	canUpdateLanguageVariant: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-to-language_variant-relationship-update');
 	}),
-	canAddLanguageVariant: Ember.computed(function() {
+	canAddLanguageVariant: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-to-language_variant-relationship-add');
 	}),
-	canRemoveLanguageVariant: Ember.computed(function() {
+	canRemoveLanguageVariant: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-to-language_variant-relationship-remove');
 	}),
-	canReadApplicationUri: Ember.computed(function() {
+	canReadApplicationUri: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-to-application_uri-relationship-read');
 	}),
-	canUpdateApplicationUri: Ember.computed(function() {
+	canUpdateApplicationUri: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-to-application_uri-relationship-update');
 	}),
-	canAddApplicationUri: Ember.computed(function() {
+	canAddApplicationUri: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-to-application_uri-relationship-add');
 	}),
-	canRemoveApplicationUri: Ember.computed(function() {
+	canRemoveApplicationUri: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'localization-to-application_uri-relationship-remove');
 	})
 });

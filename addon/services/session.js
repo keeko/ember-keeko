@@ -9,35 +9,31 @@ export default SessionService.extend({
 	init() {
 		this._super(...arguments);
 
-		let self = this;
-		this.on('authenticationSucceeded', () => {
-			// read permissions
-			const data = self.get('data.authenticated.data');
-			if (!Ember.isEmpty(data)) {
-				self.updatePermissions(data);
+		const session = this.get('session');
+		session.addObserver('isAuthenticated', () => {
+			if (session.get('isAuthenticated')) {
+				// read permissions
+				const data = this.get('data.authenticated.data');
+				if (!Ember.isEmpty(data)) {
+					const adapter = this.get('store').adapterFor('application');
+					const bearer = data.id ? data.id : null;
+					if (bearer === null) {
+						return;
+					}
+
+					Ember.$.ajax(adapter.urlPrefix() + '/auth/permissions', {
+						'method': 'GET',
+						'headers': {
+							'Authorization': 'Bearer ' + bearer
+						},
+						'dataType': 'json'
+					}).done((response) => {
+						this.set('permissions', response.data.attributes);
+					});
+				}
+			} else {
+				this.set('permissions', []);
 			}
-		});
-		this.on('invalidationSucceeded', () => {
-			self.permissions = [];
-		});
-	},
-
-	updatePermissions(data) {
-		const adapter = this.get('store').adapterFor('application');
-		const self = this;
-		const bearer = data.id ? data.id : null;
-		if (bearer === null) {
-			return;
-		}
-
-		Ember.$.ajax(adapter.urlPrefix() + '/auth/permissions', {
-			'method': 'GET',
-			'headers': {
-				'Authorization': 'Bearer ' + bearer
-			},
-			'dataType': 'json'
-		}).done((response) => {
-			self.permissions = response.data.attributes;
 		});
 	},
 

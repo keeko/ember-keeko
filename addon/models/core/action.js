@@ -7,7 +7,7 @@ export default Model.extend({
 	title: attr('string'),
 	description: attr('string'),
 	className: attr('string'),
-	module: belongsTo('core/module'),
+	module: belongsTo('core/module', {inverse: 'actions'}),
 	groups: hasMany('core/group'),
 	apis: hasMany('core/api')
 });

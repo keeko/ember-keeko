@@ -11,5 +11,5 @@ export default Model.extend({
 	location: attr('string'),
 	createdAt: attr('date'),
 	updatedAt: attr('date'),
-	user: belongsTo('core/user')
+	user: belongsTo('core/user', {inverse: 'sessions'})
 });

@@ -6,5 +6,5 @@ export default Model.extend({
 	route: attr('string'),
 	method: attr('string'),
 	requiredParams: attr('string'),
-	action: belongsTo('core/action')
+	action: belongsTo('core/action', {inverse: 'apis'})
 });

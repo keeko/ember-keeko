@@ -2,49 +2,49 @@ import Ember from 'ember';
 import { Ability } from 'ember-can';
 
 export default Ability.extend({
-	canPaginate: Ember.computed(function() {
+	canPaginate: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'action-paginate');
 	}),
-	canCreate: Ember.computed(function() {
+	canCreate: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'action-create');
 	}),
-	canRead: Ember.computed(function() {
+	canRead: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'action-read');
 	}),
-	canUpdate: Ember.computed(function() {
+	canUpdate: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'action-update');
 	}),
-	canDelete: Ember.computed(function() {
+	canDelete: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'action-delete');
 	}),
-	canReadModule: Ember.computed(function() {
+	canReadModule: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'action-to-module-relationship-read');
 	}),
-	canUpdateModule: Ember.computed(function() {
+	canUpdateModule: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'action-to-module-relationship-update');
 	}),
-	canReadGroup: Ember.computed(function() {
+	canReadGroup: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'action-to-group-relationship-read');
 	}),
-	canUpdateGroup: Ember.computed(function() {
+	canUpdateGroup: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'action-to-group-relationship-update');
 	}),
-	canAddGroup: Ember.computed(function() {
+	canAddGroup: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'action-to-group-relationship-add');
 	}),
-	canRemoveGroup: Ember.computed(function() {
+	canRemoveGroup: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'action-to-group-relationship-remove');
 	}),
-	canReadApi: Ember.computed(function() {
+	canReadApi: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'action-to-api-relationship-read');
 	}),
-	canUpdateApi: Ember.computed(function() {
+	canUpdateApi: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'action-to-api-relationship-update');
 	}),
-	canAddApi: Ember.computed(function() {
+	canAddApi: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'action-to-api-relationship-add');
 	}),
-	canRemoveApi: Ember.computed(function() {
+	canRemoveApi: Ember.computed('session.permissions', function() {
 		return this.get('session').hasPermission('keeko/core', 'action-to-api-relationship-remove');
 	})
 });
